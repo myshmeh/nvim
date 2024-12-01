@@ -89,3 +89,16 @@ now(function()
     },
   })
 end)
+
+now(function()
+  require('mini.jump2d').setup()
+end)
+
+now(function()
+  require('mini.basics').setup({
+    mappings = {
+      basic = false,
+      option_toggle_prefix = '',
+    },
+  })
+end)
