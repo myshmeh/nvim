@@ -26,6 +26,23 @@ vim.api.nvim_create_autocmd('User', {
 kmset('n', '<leader>mdu', '<cmd>DepsUpdate<cr>')
 kmset('n', '<leader>mdc', '<cmd>DepsClean<cr>')
 
+-- mini.pick
+kmset('n', '<leader>mpf', function()
+  MiniPick.builtin.files({
+    tool = 'rg',
+  }, {})
+end)
+kmset('n', '<leader>mpb', function()
+  MiniPick.builtin.buffers({
+    include_current = true
+  }, {})
+end)
+kmset('n', '<leader>mpg', function()
+  MiniPick.builtin.grep_live({
+    tool = 'rg'
+  }, {})
+end)
+
 -- turn highlight off
 kmset('n', '<leader>nh', '<cmd>nohlsearch<cr>')
 

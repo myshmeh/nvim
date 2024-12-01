@@ -62,3 +62,11 @@ now(function()
     end
   })
 end)
+
+now(function()
+  require('mini.fuzzy').setup()
+end)
+
+now(function()
+  require('mini.pick').setup()
+end)
