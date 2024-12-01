@@ -7,8 +7,8 @@ vim.g.maplocalleader = ' '
 local minifiles_toggle = function(...)
   if not MiniFiles.close() then MiniFiles.open(...) end
 end
-kmset('n', '<leader>mf', minifiles_toggle)
-kmset('n', '<leader>ms', MiniFiles.synchronize)
+kmset('n', '<leader>f', minifiles_toggle)
+kmset('n', '<leader>s', MiniFiles.synchronize)
 -- set pre-defined marks
 local set_mark = function(id, path, desc)
   MiniFiles.set_bookmark(id, path, { desc = desc })
@@ -23,24 +23,35 @@ vim.api.nvim_create_autocmd('User', {
 })
 
 -- mini.deps
-kmset('n', '<leader>mdu', '<cmd>DepsUpdate<cr>')
-kmset('n', '<leader>mdc', '<cmd>DepsClean<cr>')
+kmset('n', '<leader>du', '<cmd>DepsUpdate<cr>')
+kmset('n', '<leader>dc', '<cmd>DepsClean<cr>')
 
 -- mini.pick
-kmset('n', '<leader>mpf', function()
+kmset('n', '<leader>pf', function()
   MiniPick.builtin.files({
     tool = 'rg',
   }, {})
 end)
-kmset('n', '<leader>mpb', function()
+kmset('n', '<leader>pb', function()
   MiniPick.builtin.buffers({
     include_current = true
   }, {})
 end)
-kmset('n', '<leader>mpg', function()
+kmset('n', '<leader>pg', function()
   MiniPick.builtin.grep_live({
     tool = 'rg'
   }, {})
+end)
+
+-- mini.jump2d
+kmset('n', '<leader>jl', function()
+  MiniJump2d.start(MiniJump2d.builtin_opts.line_start)
+end)
+kmset('n', '<leader>jw', function()
+  MiniJump2d.start(MiniJump2d.builtin_opts.word_start)
+end)
+kmset('n', '<leader>jc', function()
+  MiniJump2d.start(MiniJump2d.builtin_opts.single_character)
 end)
 
 -- turn highlight off
